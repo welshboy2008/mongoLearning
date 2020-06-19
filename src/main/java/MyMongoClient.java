@@ -3,6 +3,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.result.DeleteResult;
+import model.Person;
 import org.bson.Document;
 
 import java.util.Arrays;
@@ -28,7 +29,7 @@ public class MyMongoClient {
     }
 
     /**
-     * @return Document generated from Person object.
+     * @return Document generated from model.Person object.
      */
     public static Document personToDocument(Person person) {
         return new Document("_id", person.getID())
@@ -91,7 +92,6 @@ public class MyMongoClient {
         Person p1 = new Person("Obi-Wan", "Obi-Wan Kenobi", addressMap);
         myc.addObject(p1);
         myc.removeRecord("jo");
-
         // we should ALWAYS close our mongo client when we shut down.
         //myc.wipeDatabase();
         myc.closeDatabase();
